@@ -70,3 +70,8 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+/Assets/Imports
+/Assets/PSXShaderKit
+/Assets/Supercyan Character Pack Zombie Sample
+/Assets/Supercyan Character Pack Zombie Sample.meta
+/Assets/PSXShaderKit.meta
