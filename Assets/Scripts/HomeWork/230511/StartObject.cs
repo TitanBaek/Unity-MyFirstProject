@@ -9,7 +9,7 @@ public class StartObject : MonoBehaviour
     public GameObject playerObject;         // 플레이어 오브젝트 
     [SerializeField]                        // 직렬화
     [Header("Set JumpForce")]               // 인스펙터의 점프 강도 부분 네이밍
-    private float jumpForce;                // 점프 강도
+    private float jumpForce = 5f;           // 점프 강도
 
 
     // Start is called before the first frame update
