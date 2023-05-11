@@ -18,6 +18,10 @@ public class StartObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // 질문입니다.
+        // 아래와 같이 외부의 오브젝트의 값을 바꿔주는 작업은 Start에서 처리해주는게 올바른 방법인지 궁금합니다.
+
+
         // 외부의 객체(playerObject와 playerObject의 Rigidbody를 건드리는 작업이기 때문에 
         // Awake가 아닌 Start에서 처리해준다.
         playerObject.name = "ImPlayer";                         // 플레이어 오브젝트의 이름을 바꿔주는 부분
