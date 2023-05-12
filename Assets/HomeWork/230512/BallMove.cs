@@ -15,7 +15,7 @@ public class BallMove : MonoBehaviour
     [SerializeField]
     private float movePower = 1f;
     [SerializeField]
-    private float jumpPower = 1f;
+    private float jumpPower = 1f; 
 
     /// <summary>
     /// 게임 실행 시 리지드바디 컴포넌트 가져오기
