@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Move();
-        //Rotate();
+        Rotate();
         //LookAt();
     }
     private void Move()

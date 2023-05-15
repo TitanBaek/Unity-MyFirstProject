@@ -78,7 +78,7 @@ public class UnityBasic : MonoBehaviour
 
     void ComponentBasic()
     {
-        /*
+        
         // <게임오브젝트 내 컴포넌트 접근>
         // GetComponent를 이용하여 게임오브젝트 내 컴포넌트 접근
         gameObjectGetComponent = GetComponent<AudioSource>();
@@ -107,6 +107,6 @@ public class UnityBasic : MonoBehaviour
         gameObject.name = "어";
 
         Destroy(GetComponent<AudioSource>(),5f);
-        */
+        
     }
 }
