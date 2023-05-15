@@ -14,10 +14,13 @@ public class TankMove : MonoBehaviour
     /// <summary>
     /// 이동속도와 회전속도
     /// </summary>
-    [SerializeField]
-    private float moveSpeed = 5f;
-    [SerializeField]
-    private float spinSpeed = 5f;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float spinSpeed = 5f;
+
+    [Header("Shooter")]
+    [SerializeField] private Transform bulletPoint;
+    [SerializeField] private Bullet bulletPrefab;
+    [SerializeField] private float repeatTime;
 
     /// <summary>
     /// 프레임단위로 Move와 Rotate 호출
@@ -52,5 +55,31 @@ public class TankMove : MonoBehaviour
     {
         dir.x = value.Get<Vector2>().x;
         dir.z = value.Get<Vector2>().y; 
+    }
+
+    private Coroutine bulletRoutine; // 총알 생성 루틴
+
+    IEnumerator BulletMakeRoutine()
+    {
+        while (true)
+        {
+            Instantiate(bulletPrefab, bulletPoint.position, bulletPoint.rotation); // 씬에 Prefab 추가, GameObject를 반환하는 메소드다
+            yield return new WaitForSeconds(repeatTime);
+        }
+    }
+    private void OnFire(InputValue value)
+    {
+        Instantiate(bulletPrefab, bulletPoint.position, bulletPoint.rotation); // 씬에 Prefab 추가, GameObject를 반환하는 메소드다
+    }
+
+    private void OnRepeatFire(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            bulletRoutine = StartCoroutine(BulletMakeRoutine());
+        } else
+        {
+            StopCoroutine(bulletRoutine);
+        }
     }
 }

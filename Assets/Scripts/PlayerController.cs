@@ -53,8 +53,8 @@ public class PlayerController : MonoBehaviour
         Vector3 rotation = transform.rotation.ToEulerAngles();
         */
 
-        Vector3 rotation = transform.rotation.ToEulerAngles();
-        transform.rotation = Quaternion.Euler(rotation);
+        //Vector3 rotation = transform.rotation.ToEulerAngles();
+        //transform.rotation = Quaternion.Euler(rotation);
     }
     private void LookAt()
     {
