@@ -7,7 +7,8 @@ public class Bullet_230515 : MonoBehaviour
 {
     private Rigidbody rb;                                               // 리지드바디
     [SerializeField] private float bulletSpeed;                         // 포탄의 발사 스피드
-
+    [SerializeField] private GameObject explosionEffect;
+     
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();                                 // 게임이 실행됨과 동시에 리지드바디 컴포넌트를 가져와 초기화 한다.
@@ -20,6 +21,8 @@ public class Bullet_230515 : MonoBehaviour
 
     private void OnCollisionEnter()
     {
-        Debug.Log("총알이  충돌했다.");
+        Instantiate(explosionEffect, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
+    
 }

@@ -13,17 +13,19 @@ public class PlayerController_230515 : MonoBehaviour
     [SerializeField] private Transform bulletStart_pos;         // 총알이 발사 될 게임 오브젝트의 Transform
     [SerializeField] private float fireSpeed;                   // 포탄 발사간 딜레이(코루틴에 들어갈 값)
 
+    private float prevTime;
+
     private Coroutine bulletCoroutine;                          // 포탄 연속 발사를 구현하기 위한 코루틴을 담을 코루틴 자료형의 변수
 
     IEnumerator RepeatFire()                                    // 연속 발사 코루틴 
     {
         while (true)                                                                                // 계속해서 반복
-        {
+        {                                            
             Instantiate(bulletPrefab, bulletStart_pos.position, bulletStart_pos.rotation);          // 포탄 Prefab과 생성 위치와 각도를 매개변수로 하여 프리팹 인스턴스 생성
             yield return new WaitForSeconds(fireSpeed);                                             // fireSpeed 만큼 딜레이을 줌
-
         }
     }
+
     private void Update()                                                                           // 프레임단위로 이동과 회전 함수 호출
     {
         Move();
@@ -48,11 +50,13 @@ public class PlayerController_230515 : MonoBehaviour
 
     void OnRepeatFire(InputValue value)                                                            // 연사 버튼(마우스 왼쪽)이 입력 되었을 때 호출되는 메소드
     {
-        if (value.isPressed)                                                                       // .isPressed 는 현재 눌리고 있는 상태를 뜻함
+        if (value.isPressed )                                                                       // .isPressed 는 현재 눌리고 있는 상태를 뜻함
         {
             bulletCoroutine = StartCoroutine(RepeatFire());
         } else                                                                                     // 버튼이 눌렸다가 때어졌을 때
         {
+            prevTime = Time.smoothDeltaTime;
+            Debug.Log(prevTime * 1000);
             StopCoroutine(bulletCoroutine);
         }
     }
