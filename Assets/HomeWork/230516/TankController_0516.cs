@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,10 @@ public class TankController_0516 : MonoBehaviour
     [SerializeField] private Transform bulletStart_pos;
     [SerializeField] private AudioSource bullet_AudioSource;
     //[SerializeField] private AudioClip bullet_Audioclip;
+    [SerializeField] private CinemachineVirtualCamera normalView;
+    [SerializeField] private CinemachineVirtualCamera aimView;
+
+    private bool nowAim = false;
 
     private Coroutine coroutine;
     private void Awake()
@@ -54,12 +59,26 @@ public class TankController_0516 : MonoBehaviour
 
     private void OnRepeatFire(InputValue value)
     {
-        if (value.isPressed)
+        if (value.isPressed && nowAim)
         {
             coroutine = StartCoroutine(RepeatFire());
         } else
         {
             StopCoroutine(coroutine);
+        }
+    }
+
+    private void OnAim(InputValue value)
+    {
+        if(value.isPressed)
+        {
+            nowAim = true;
+            aimView.Priority = 3;
+        } else
+        {
+            nowAim = false;
+            aimView.Priority = 1;
+
         }
     }
 }

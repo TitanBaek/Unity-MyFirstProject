@@ -10,6 +10,7 @@ public class Bullet_0516 : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip bullet_fire;
     [SerializeField] private AudioClip bullet_explo;
+    private bool first_explo = true;
 
     private void Awake() 
     {
@@ -37,10 +38,18 @@ public class Bullet_0516 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        SoundStop();
         Instantiate(obj, transform.position, transform.rotation);
-        audioSource.clip = bullet_explo;
-        SoundPlay();
-        Destroy(gameObject);
+        if (first_explo)
+        {
+            audioSource.clip = bullet_explo;
+            SoundPlay();
+            first_explo = false;
+        }
+        Destroy(gameObject,0.3f);
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("디스트로이");
     }
 }
