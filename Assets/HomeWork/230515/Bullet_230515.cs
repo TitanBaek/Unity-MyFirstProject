@@ -16,7 +16,7 @@ public class Bullet_230515 : MonoBehaviour
     private void Start()
     {
         rb.velocity = transform.forward * bulletSpeed;                  // 포탄이 생성되면 현 포탄을 기준으로 발사 스피드만큼 힘을 가해 움직임을 준다(?)
-        Destroy(gameObject,5f);                                         // 5초 뒤 포탄 삭제
+                                                                        // 5초 뒤 포탄 삭제
     }
 
     private void OnCollisionEnter()
