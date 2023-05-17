@@ -59,7 +59,22 @@ public class TankController_0516 : MonoBehaviour
 
     private void OnRepeatFire(InputValue value)
     {
-        if (value.isPressed && nowAim)
+        if( coroutine != null )
+        {
+
+        }
+        if (!nowAim && coroutine == null)
+        {
+            return;
+
+        }
+        else if (!nowAim && coroutine != null)
+        {
+            StopCoroutine(coroutine);
+            return;
+        }
+
+        if (value.isPressed)
         {
             coroutine = StartCoroutine(RepeatFire());
         } else

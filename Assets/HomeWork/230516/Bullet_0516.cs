@@ -38,14 +38,14 @@ public class Bullet_0516 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Instantiate(obj, transform.position, transform.rotation);
         if (first_explo)
         {
+            first_explo = false;
+            Instantiate(obj, transform.position, transform.rotation);
             audioSource.clip = bullet_explo;
             SoundPlay();
-            first_explo = false;
+            Destroy(gameObject, 0.2f);
         }
-        Destroy(gameObject,0.3f);
     }
 
     private void OnDestroy()
