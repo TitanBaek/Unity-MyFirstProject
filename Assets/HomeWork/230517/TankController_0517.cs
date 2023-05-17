@@ -14,11 +14,15 @@ public class TankController_0517 : MonoBehaviour
     [SerializeField] private Bullet_0517 bullet;
     [SerializeField] private CinemachineVirtualCamera normal_cam;
     [SerializeField] private CinemachineVirtualCamera aim_cam;
+    private Animator ani;
+
+    private AudioSource[] audioSources;
     private Coroutine coroutine;
 
     private void Awake()
     {
-        
+        audioSources = GetComponents<AudioSource>();
+        ani = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -29,7 +33,6 @@ public class TankController_0517 : MonoBehaviour
 
     private void OnRepeatFire(InputValue value)
     {
-        Debug.Log("?");
         if (value.isPressed)
         {
             coroutine = StartCoroutine(RepeatFire());
@@ -43,6 +46,8 @@ public class TankController_0517 : MonoBehaviour
     {
         while (true)
         {
+            ani.SetTrigger("ShotAnimation");
+            audioSources[1].Play();
             Instantiate(bullet, fireStart_pos.position, fireStart_pos.rotation);
             yield return new WaitForSeconds(fireSpeed);
         }
