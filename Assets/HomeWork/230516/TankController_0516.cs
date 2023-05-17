@@ -17,11 +17,13 @@ public class TankController_0516 : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera normalView;
     [SerializeField] private CinemachineVirtualCamera aimView;
 
-    private bool nowAim = false;
+    private Animator animator;
+    //private bool nowAim = false;
 
     private Coroutine coroutine;
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         bullet_AudioSource = GetComponent<AudioSource>();
     }
 
@@ -48,32 +50,25 @@ public class TankController_0516 : MonoBehaviour
         moveDir.z = value.Get<Vector2>().y;
     }
 
+    public void Fire()
+    {
+        animator.SetTrigger("Fire");
+        Instantiate(bullet, bulletStart_pos.position, bulletStart_pos.rotation);
+    }
+
     IEnumerator RepeatFire()
     {
         while (true)
         {
+            animator.SetTrigger("Fire");
             Instantiate(bullet,bulletStart_pos.position, bulletStart_pos.rotation);
+
             yield return new WaitForSeconds(1f);
         }
     }
 
     private void OnRepeatFire(InputValue value)
     {
-        if( coroutine != null )
-        {
-
-        }
-        if (!nowAim && coroutine == null)
-        {
-            return;
-
-        }
-        else if (!nowAim && coroutine != null)
-        {
-            StopCoroutine(coroutine);
-            return;
-        }
-
         if (value.isPressed)
         {
             coroutine = StartCoroutine(RepeatFire());
@@ -87,11 +82,11 @@ public class TankController_0516 : MonoBehaviour
     {
         if(value.isPressed)
         {
-            nowAim = true;
+            //nowAim = true;
             aimView.Priority = 3;
         } else
         {
-            nowAim = false;
+            //nowAim = false;
             aimView.Priority = 1;
 
         }

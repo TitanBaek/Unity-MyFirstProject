@@ -197,6 +197,17 @@
                 },
                 {
                     "name": "",
+                    "id": "7a4d147a-a596-4236-892e-5ff2e5af9918",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "087238d9-ccfd-47ab-b671-557620663c91",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
