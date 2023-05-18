@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class GameSetting
+/*
+public class GameSetting0
 {
     // 0. static 함수 바로 앞에 선언해주면 static함수를 게임이 실행되자 마자 실행해줌.
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -18,3 +18,4 @@ public class GameSetting
         }
     }
 }
+*/

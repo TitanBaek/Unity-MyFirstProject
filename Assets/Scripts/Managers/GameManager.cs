@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+/*
+public class GameManager0 : MonoBehaviour
 {
     private static GameManager instance;
     private static DataManager dataManager;
@@ -44,3 +45,5 @@ public class GameManager : MonoBehaviour
         }
     }
 }
+
+*/

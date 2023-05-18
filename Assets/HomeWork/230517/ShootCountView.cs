@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-
+/*
 public class ShootCountView : MonoBehaviour
 {
     private TMP_Text textView;
@@ -28,3 +28,5 @@ public class ShootCountView : MonoBehaviour
         textView.text = num.ToString();
     }
 }
+
+*/

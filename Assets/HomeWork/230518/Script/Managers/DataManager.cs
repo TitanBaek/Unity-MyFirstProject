@@ -2,21 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-/*
-public class DataManager0 : MonoBehaviour
+public class DataManager : MonoBehaviour
 {
     [SerializeField] private int shootCount;
-    public Action<int> OnShootCountChanged;
+    public Action<int> OnChangedCount;
+    public int ShootCount {  get { return shootCount;  } }
 
-    public int ShootCount { get { return shootCount; } }
     public void AddShootCount(int count)
     {
         shootCount += count;
-        OnShootCountChanged?.Invoke(shootCount);
+        OnChangedCount?.Invoke(count);
     }
-
 }
-
-*/
