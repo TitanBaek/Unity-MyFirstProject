@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class TankController_0517 : MonoBehaviour
@@ -19,17 +20,32 @@ public class TankController_0517 : MonoBehaviour
     private AudioSource[] audioSources;
     private Coroutine coroutine;
 
+    public UnityEvent onFired;
     private void Awake()
     {
         audioSources = GetComponents<AudioSource>();
         ani = GetComponentInChildren<Animator>();
     }
 
+    private void OnEnable()
+    {
+        //GameManager.Data.OnShootCountChanged += Test;
+    }
+
+    private void OnDisable()
+    {
+        //GameManager.Data.OnShootCountChanged += Test;
+
+    }
+
     public void Fire()
     {
         ani.SetTrigger("ShotAnimation");
-        audioSources[1].Play();
+        //audioSources[1].Play();
         Instantiate(bullet, fireStart_pos.position, fireStart_pos.rotation);
+        GameManager.Data.AddShootCount(1);
+        Debug.Log(GameManager.Data.ShootCount);
+        onFired?.Invoke();
     }
     private void Update()
     {
@@ -84,5 +100,10 @@ public class TankController_0517 : MonoBehaviour
             normal_cam.Priority = 3;
             aim_cam.Priority = 1;
         }
+    }
+    
+    private int Test(int count)
+    {
+        return count;
     }
 }
