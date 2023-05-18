@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/HomeWork/230517/0517.unity
     guid: 6955e43a0791cda468937739e7e78a77
+  - enabled: 1
+    path: Assets/HomeWork/230518/GameView.unity
+    guid: b075149b6da24b74da0a8be33e3f4397
+  - enabled: 1
+    path: Assets/HomeWork/230518/MainTitle.unity
+    guid: b704d67de354ffd4384a7029450ea0ef
   m_configObjects: {}
