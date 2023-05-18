@@ -25,6 +25,12 @@ public class TankController_0517 : MonoBehaviour
         ani = GetComponentInChildren<Animator>();
     }
 
+    public void Fire()
+    {
+        ani.SetTrigger("ShotAnimation");
+        audioSources[1].Play();
+        Instantiate(bullet, fireStart_pos.position, fireStart_pos.rotation);
+    }
     private void Update()
     {
         Move();
@@ -46,9 +52,7 @@ public class TankController_0517 : MonoBehaviour
     {
         while (true)
         {
-            ani.SetTrigger("ShotAnimation");
-            audioSources[1].Play();
-            Instantiate(bullet, fireStart_pos.position, fireStart_pos.rotation);
+            Fire();
             yield return new WaitForSeconds(fireSpeed);
         }
     }
